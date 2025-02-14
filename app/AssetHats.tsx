@@ -1,12 +1,16 @@
-export default function AssetHats() {
+import { assets } from './AssetData';
+
+export default function AssetHats({ onHat }) {
     return (
         <>
-            <div className="rounded-2xl border border-1">OPTION A</div>
-            <div className="rounded-2xl border border-1">OPTION B</div>
-            <div className="rounded-2xl border border-1">OPTION C</div>
-            <div className="rounded-2xl border border-1">OPTION D</div>
-            <div className="rounded-2xl border border-1">OPTION E</div>
-            <div className="rounded-2xl border border-1">OPTION F</div>
+            {assets.map(asset => {
+                if (asset.category === 'hat') {
+                    return <div
+                        key={asset.id} 
+                        onClick={ () => onHat('option a') }
+                        className="rounded-2xl border border-1">OPTION A</div>
+                }
+            })}
         </>
     )
 }

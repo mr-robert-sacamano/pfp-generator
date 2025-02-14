@@ -1,16 +1,20 @@
 'use client';
 
-//import { useState } from "react";
+import { useState } from "react";
 
 import ProfilePicture from "./ProfilePicture";
 import AssetManager from "./AssetManager";
 
 export default function Home() {
-    /*
-    const [images, setImages] = useState([]);
-    const [layeredImage, setLayeredImage] = useState(null);
+    const [hat, setHat] = useState(false);
+    const [eyes, setEyes] = useState(false);
+    const [mouth, setMouth] = useState(false);
+    const [accessories, setAccessories] = useState(false);
+
+    //const [layeredImage, setLayeredImage] = useState(null);
 
     // Handle image upload
+    /*
     const handleImageUpload = (event) => {
         const files = Array.from(event.target.files);
         setImages((prevImages) => [...prevImages, ...files]);
@@ -86,7 +90,7 @@ export default function Home() {
                     </div>
 
                     <div className="mb-6">
-                        <AssetManager />
+                        <AssetManager onHat={setHat} onEyes={setEyes} onMouth={setMouth} onAccessories={setAccessories} />
                     </div>
                 </div>
             </div>

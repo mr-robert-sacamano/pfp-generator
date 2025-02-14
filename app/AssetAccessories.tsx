@@ -1,9 +1,16 @@
-export default function AssetAccessories() {
+import { assets } from './AssetData';
+
+export default function AssetAccessories({ onAccessories }) {
     return (
         <>
-            <div className="rounded-2xl border border-1">OPTION X</div>
-            <div className="rounded-2xl border border-1">OPTION Y</div>
-            <div className="rounded-2xl border border-1">OPTION Z</div>
+            {assets.map(asset => {
+                if (asset.category === 'accessory') {
+                    return <div
+                        key={asset.id} 
+                        onClick={ () => onAccessories('option a') }
+                        className="rounded-2xl border border-1">OPTION A</div>
+                }
+            })}
         </>
     )
 }

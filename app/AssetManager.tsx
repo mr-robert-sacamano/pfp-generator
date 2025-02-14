@@ -6,7 +6,7 @@ import AssetEyes from "./AssetEyes";
 import AssetMouths from "./AssetMouths";
 import AssetAccessories from "./AssetAccessories";
 
-export default function AssetManager() {
+export default function AssetManager({ onHat, onEyes, onMouth, onAccessories }) {
     const [asset, setAsset] = useState('hats');
 
     return (
@@ -73,10 +73,10 @@ export default function AssetManager() {
             </div>
 
             <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 border border-1 p-4 rounded-3xl">
-                {asset === 'hats' && <AssetHats />}
-                {asset === 'eyes' && <AssetEyes />}
-                {asset === 'mouths' && <AssetMouths />}
-                {asset === 'accessories' && <AssetAccessories />}
+                {asset === 'hats' && <AssetHats onHat={onHat} />}
+                {asset === 'eyes' && <AssetEyes onEyes={onEyes} />}
+                {asset === 'mouths' && <AssetMouths onMouth={onMouth} />}
+                {asset === 'accessories' && <AssetAccessories onAccessories={onAccessories} />}
             </div>
         </>
     )
