@@ -66,14 +66,14 @@ export default function Home() {
             <div className="grid grid-cols-1 gap-y-20 py-12">
                 <div className="px-6">
                     <div 
-                        className="flex justify-center gap-2 mb-6 text-2xl font-semibold py-6 w-full rounded-md text-white bg-[#ca41c5] rounded-3xl shadow-[8px_8px_0_0_rgba(0,0,0)] hover:cursor-pointer hover:bg-[#db52d6] focus:shadow-none focus:border-none"
+                        className="flex justify-center gap-2 mb-6 font-semibold py-6 w-full rounded-md text-white bg-[#ca41c5] rounded-3xl shadow-[8px_8px_0_0_rgba(0,0,0)] hover:cursor-pointer hover:bg-[#db52d6] focus:shadow-none focus:border-none"
                         onClick={combineImages}>
 
-                            <div className="flex align-center">
-                                DOWNLOAD YOUR CUSTOMIZED BETH PFP
+                            <div className="flex align-center text-sm sm:text-xl">
+                                DOWNLOAD YOUR BETH PFP
 
                                 <span className="ml-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4 sm:size-6">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                                     </svg>
                                 </span>
