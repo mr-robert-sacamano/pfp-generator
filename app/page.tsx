@@ -6,16 +6,15 @@ import ProfilePicture from "./ProfilePicture";
 import AssetManager from "./AssetManager";
 
 export default function Home() {
+    /*
     const [images, setImages] = useState([]);
     const [layeredImage, setLayeredImage] = useState(null);
 
-    /*
     // Handle image upload
     const handleImageUpload = (event) => {
         const files = Array.from(event.target.files);
         setImages((prevImages) => [...prevImages, ...files]);
     };
-    */
 
     const combineImages = () => {
         const canvas = document.createElement("canvas");
@@ -24,7 +23,6 @@ export default function Home() {
         let width = 0;
         let height = 0;
     
-        /*
         images.forEach((image) => {
           const img = new Image();
           img.onload = () => {
@@ -49,8 +47,8 @@ export default function Home() {
           };
           img.src = URL.createObjectURL(image);
         });
-        */
     };
+    */
 
     return (
         <div className="overflow-hidden">
