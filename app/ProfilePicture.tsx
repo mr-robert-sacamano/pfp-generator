@@ -5,7 +5,7 @@ export default function ProfilePicture() {
         <div>
             <Image
                 alt="Beth PFP"
-                className="max-w-full border-4 border-black rounded-3xl"
+                className="max-w-full border-4 border-black rounded-3xl object-fit"
                 src="/image/beth.jpg"
                 width={600}
                 height={600}
