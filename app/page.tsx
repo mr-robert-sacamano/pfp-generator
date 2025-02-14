@@ -69,7 +69,7 @@ export default function Home() {
                         <div className="px-6">
                             <div 
                                 className="flex justify-center gap-2 mb-6 text-2xl font-semibold py-6 w-full rounded-md text-white bg-[#ca41c5] rounded-3xl shadow-[8px_8px_0_0_rgba(0,0,0)] hover:cursor-pointer hover:bg-[#db52d6] focus:shadow-none focus:border-none"
-                                onClick={combineImages}>
+                                /*onClick={combineImages}*/>
 
                                     <div className="flex align-center">
                                         DOWNLOAD YOUR CUSTOMIZED BETH PFP
