@@ -2,14 +2,15 @@
 
 import { useState } from "react";
 
-import ProfilePicture from "./ProfilePicture";
 import AssetManager from "./AssetManager";
+import ProfilePicture from "./ProfilePicture";
+import { AssetType } from "./AssetType";
 
 export default function Home() {
-    const [hat, setHat] = useState(false);
-    const [eyes, setEyes] = useState(false);
-    const [mouth, setMouth] = useState(false);
-    const [accessories, setAccessories] = useState(false);
+    const [assetHat, setAssetHat] = useState('');
+    const [assetEyes, setAssetEyes] = useState('');
+    const [assetMouth, setAssetMouth] = useState('');
+    const [assetAccessory, setAssetAccessory] = useState('');
 
     //const [layeredImage, setLayeredImage] = useState(null);
 
@@ -22,10 +23,10 @@ export default function Home() {
     */
 
     const combineImages = () => {
-        /*
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
     
+        /*
         let width = 0;
         let height = 0;
     
@@ -90,7 +91,7 @@ export default function Home() {
                     </div>
 
                     <div className="mb-6">
-                        <AssetManager onHat={setHat} onEyes={setEyes} onMouth={setMouth} onAccessories={setAccessories} />
+                        <AssetManager setAssetHat={setAssetHat} setAssetEyes={setAssetEyes} setAssetMouth={setAssetMouth} setAssetAccessory={setAssetAccessory} />
                     </div>
                 </div>
             </div>

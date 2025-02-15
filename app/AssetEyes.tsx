@@ -1,14 +1,18 @@
 import { assets } from './AssetData';
 
-export default function AssetEyes({ onEyes }) {
+interface Props {
+    setAssetEyes: any;
+}
+
+export default function AssetEyes(props: Props) {
     return (
         <>
             {assets.map(asset => {
                 if (asset.category === 'eyes') {
                     return <div
                         key={asset.id} 
-                        onClick={ () => onEyes('option a') }
-                        className="rounded-2xl border border-1">OPTION A</div>
+                        onClick={() => props.setAssetEyes(asset.imageUrl)}
+                        className="rounded-2xl border border-1 hover:cursor-pointer">{asset.id}</div>
                 }
             })}
         </>

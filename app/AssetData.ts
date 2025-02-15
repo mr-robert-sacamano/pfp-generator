@@ -1,51 +1,49 @@
-import internal from "stream";
-
-export interface Asset {
+export interface AssetData {
     id: number;
     category: string;
     imageUrl: string;
 }
 
-export const assets: Asset[] = [{
+export const assets: AssetData[] = [{
     id: 1,
     category: 'hat',
-    imageUrl: ''
+    imageUrl: 'A'
 }, {
     id: 2,
     category: 'hat',
-    imageUrl: ''
+    imageUrl: 'B'
 }, {
     id: 3,
     category: 'hat',
-    imageUrl: ''
+    imageUrl: 'C'
 }, {
     id: 4,
     category: 'hat',
-    imageUrl: ''
+    imageUrl: 'E'
 }, {
     id: 5,
     category: 'hat',
-    imageUrl: ''
+    imageUrl: 'F'
 }, {
     id: 6,
     category: 'eyes',
-    imageUrl: ''
+    imageUrl: 'G'
 }, {
     id: 7,
     category: 'eyes',
-    imageUrl: ''
+    imageUrl: 'H'
 }, {
     id: 8,
     category: 'eyes',
-    imageUrl: ''
+    imageUrl: 'I'
 }, {
     id: 9,
     category: 'eyes',
-    imageUrl: ''
+    imageUrl: 'J'
 }, {
     id: 10,
     category: 'eyes',
-    imageUrl: ''
+    imageUrl: 'K'
 }, {
     id: 11,
     category: 'mouth',

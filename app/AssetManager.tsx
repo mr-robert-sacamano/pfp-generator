@@ -5,9 +5,17 @@ import AssetHats from "./AssetHats";
 import AssetEyes from "./AssetEyes";
 import AssetMouths from "./AssetMouths";
 import AssetAccessories from "./AssetAccessories";
+import { AssetData } from "./AssetData";
 
-export default function AssetManager({ onHat, onEyes, onMouth, onAccessories }) {
-    const [asset, setAsset] = useState('hats');
+interface Props {
+    setAssetHat: any;
+    setAssetEyes: any;
+    setAssetMouth: any;
+    setAssetAccessory: any;
+}
+
+export default function AssetManager(props: Props) {
+    const [category, setCategory] = useState('hats');
 
     return (
         <>
@@ -47,25 +55,25 @@ export default function AssetManager({ onHat, onEyes, onMouth, onAccessories }) 
 
                 <div className="flex justify-between text-[12px] sm:text-base">
                     <div
-                        onClick={() => { setAsset('hats') }}  
+                        onClick={() => { setCategory('hats') }}  
                         className="p-3 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[120px] sm:w-[136px] text-center hover:cursor-pointer hover:bg-[#11b3ff]">
                         HATS
                     </div>
 
                     <div
-                        onClick={() => { setAsset('eyes') }}  
+                        onClick={() => { setCategory('eyes') }}  
                         className="p-3 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[120px] sm:w-[136px] text-center hover:cursor-pointer hover:bg-[#11b3ff]">
                         EYES
                     </div>                              
 
                     <div
-                        onClick={() => { setAsset('mouths') }}  
+                        onClick={() => { setCategory('mouths') }}  
                         className="p-3 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[120px] sm:w-[136px] text-center hover:cursor-pointer hover:bg-[#11b3ff]">
                         MOUTHS
                     </div>
 
                     <div
-                        onClick={() => { setAsset('accessories') }}  
+                        onClick={() => { setCategory('accessories') }}  
                         className="p-3 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[120px] sm:w-[136px] text-center hover:cursor-pointer hover:bg-[#11b3ff]">
                         ACCESSORIES
                     </div>                                 
@@ -73,10 +81,10 @@ export default function AssetManager({ onHat, onEyes, onMouth, onAccessories }) 
             </div>
 
             <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 border border-1 p-4 rounded-3xl">
-                {asset === 'hats' && <AssetHats onHat={onHat} />}
-                {asset === 'eyes' && <AssetEyes onEyes={onEyes} />}
-                {asset === 'mouths' && <AssetMouths onMouth={onMouth} />}
-                {asset === 'accessories' && <AssetAccessories onAccessories={onAccessories} />}
+                {category === 'hats' && <AssetHats setAssetHat={props.setAssetHat} />}
+                {category === 'eyes' && <AssetEyes setAssetEyes={props.setAssetEyes} />}
+                {category === 'mouths' && <AssetMouths setAssetMouth={props.setAssetMouth} />}
+                {category === 'accessories' && <AssetAccessories setAssetAccessory={props.setAssetAccessory} />}
             </div>
         </>
     )

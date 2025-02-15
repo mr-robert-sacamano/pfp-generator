@@ -1,14 +1,18 @@
 import { assets } from './AssetData';
 
-export default function AssetHats({ onHat }) {
+interface Props {
+    setAssetHat: any;
+}
+
+export default function AssetHats(props: Props) {
     return (
         <>
             {assets.map(asset => {
                 if (asset.category === 'hat') {
                     return <div
                         key={asset.id} 
-                        onClick={ () => onHat('option a') }
-                        className="rounded-2xl border border-1">OPTION A</div>
+                        onClick={() => props.setAssetHat(asset.imageUrl)}
+                        className="rounded-2xl border border-1 hover:cursor-pointer">{asset.id}</div>
                 }
             })}
         </>
