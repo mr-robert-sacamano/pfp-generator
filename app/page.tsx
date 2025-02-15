@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import AssetManager from "./AssetManager";
 import ProfilePicture from "./ProfilePicture";
-import { AssetType } from "./AssetType";
 
 export default function Home() {
     const [assetHat, setAssetHat] = useState('');
