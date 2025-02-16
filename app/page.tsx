@@ -97,7 +97,7 @@ export default function Home() {
                     <a 
                         id="pfp-download"
                         download="beth-pfp.png"
-                        className="flex justify-center gap-2 mb-6 font-semibold py-6 w-full rounded-md text-white bg-[#ca41c5] rounded-3xl shadow-[8px_8px_0_0_rgba(0,0,0)] hover:cursor-pointer hover:bg-[#ec63e7] focus:shadow-none focus:border-none">
+                        className="flex justify-center gap-2 mb-6 font-semibold py-6 w-full rounded-md text-white bg-[#ca41c5] rounded-3xl shadow-[8px_8px_0_0_rgba(0,0,0)] hover:cursor-pointer hover:bg-[#ec63e7]">
 
                         <div className="flex align-center text-sm sm:text-xl">
                             DOWNLOAD YOUR BETH PFP
