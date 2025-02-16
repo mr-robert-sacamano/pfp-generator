@@ -11,55 +11,46 @@ import AssetAccessories from "./AssetAccessories";
 
 export default function Home() {
     const [category, setCategory] = useState('hats');
+
     const [assetHat, setAssetHat] = useState('');
     const [assetEyes, setAssetEyes] = useState('');
     const [assetMouth, setAssetMouth] = useState('');
     const [assetAccessory, setAssetAccessory] = useState('');
 
     const handleImageLoad = () => {
-        const pfpDownload = document.querySelector('#pfp-download') as HTMLAnchorElement;
-        const pfpImg = document.querySelector('#pfp') as HTMLImageElement;
+        const pfpDownload: HTMLAnchorElement = document.querySelector('#pfp-download') as HTMLAnchorElement;
+        const pfpImg: HTMLImageElement = document.querySelector('#pfp') as HTMLImageElement;
     
+        const images: Array<HTMLImageElement> = [];
+        images.push(pfpImg);
+
+        if (assetHat) {
+            //images.push(document.querySelector('.hat-' + assetHat) as HTMLImageElement);
+        }
+        if (assetEyes) {
+            //images.push(document.querySelector('.eyes-' + assetEyes) as HTMLImageElement);
+        }
+        if (assetMouth) {
+            //images.push(document.querySelector('.mouth-' + assetMouth) as HTMLImageElement);
+        }
+        if (assetAccessory) {
+            //images.push(document.querySelector('.accessory-' + assetAccessory) as HTMLImageElement);
+        }
+
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
         
-        /*
-        images.forEach((image) => {
-            const img = new Image();
-            img.onload = () => {
-              if (img.width > width) width = img.width;
-              if (img.height > height) height = img.height;
-              
-              canvas.width = width;
-              canvas.height = height;
-      
-              // Draw each image layer by layer
-              images.forEach((image, index) => {
-                const img = new Image();
-                img.src = URL.createObjectURL(image);
-                img.onload = () => {
-                  ctx.drawImage(img, 0, 0);
-                  // Update the layered image after drawing all images
-                  if (index === images.length - 1) {
-                    setLayeredImage(canvas.toDataURL("image/png"));
-                  }
-                };
-              });
-            };
-            img.src = URL.createObjectURL(image);
-          });
-        */
-
         canvas.width = 600;
         canvas.height = 600;
-        
-        if (context) {
-            console.log('here');
-            context.drawImage(pfpImg, 0, 0);
 
-            pfpImg.src = canvas.toDataURL('image/png');
-            pfpDownload.href = canvas.toDataURL('image/png');
+        if (context) {
+            images.forEach((image, index) => {
+                context.drawImage(image, 0, 0);
+            });
         }
+        
+        pfpImg.src = canvas.toDataURL('image/png');
+        pfpDownload.href = canvas.toDataURL('image/png');
     }
 
     useEffect(() => {
@@ -92,7 +83,7 @@ export default function Home() {
                     <a href="https://bethonsolana.com" className="text-sm sm:text-base">Take me back to bethonsolana.com</a>
                 </div>
  
-                <div className="grid grid-cols-1 pt-12 pb-6">
+                <div className="grid grid-cols-1 pt-12 pb-1">
                     <a 
                         id="pfp-download"
                         download="beth-pfp.png"
@@ -118,7 +109,7 @@ export default function Home() {
                         className="max-w-full border-4 border-black rounded-3xl object-fit"
                         width={600}
                         height={600}
-                        onLoadingComplete={handleImageLoad}
+                        onLoad={handleImageLoad}
                         />
                 </div>
 
