@@ -5,7 +5,6 @@ import AssetHats from "./AssetHats";
 import AssetEyes from "./AssetEyes";
 import AssetMouths from "./AssetMouths";
 import AssetAccessories from "./AssetAccessories";
-import { AssetData } from "./AssetData";
 
 interface Props {
     setAssetHat: any;
@@ -17,13 +16,27 @@ interface Props {
 export default function AssetManager(props: Props) {
     const [category, setCategory] = useState('hats');
 
+    const resetImage = () => {
+        props.setAssetHat('');
+        props.setAssetEyes('');
+        props.setAssetMouth('');
+        props.setAssetAccessory('');
+    }
+
+    const randomImage = () => {
+        props.setAssetHat('');
+        props.setAssetEyes('');
+        props.setAssetMouth('');
+        props.setAssetAccessory('');
+    }    
+
     return (
         <>
             <div className="mb-6">
                 <div className="flex justify-center text-sm mb-6">
                     <div className="flex items-center gap-2">
                         <div
-                            onClick={() => {}} 
+                            onClick={() => { resetImage() }} 
                             className="flex justify-center px-4 py-2 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[128px] text-center hover:cursor-pointer hover:bg-[#11b3ff]">
                                 <div className="flex align-center text-[12px] sm:text-base">
                                     RESET
@@ -37,7 +50,7 @@ export default function AssetManager(props: Props) {
                         </div>
 
                         <div
-                            onClick={() => {}} 
+                            onClick={() => { randomImage() }} 
                             className="flex justify-center px-4 py-2 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[128px] text-center hover:cursor-pointer hover:bg-[#11b3ff]">
                                 <div className="flex align-center text-[12px] sm:text-base">
                                     RANDOM

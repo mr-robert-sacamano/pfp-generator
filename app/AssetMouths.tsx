@@ -1,4 +1,4 @@
-import { assets } from './AssetData';
+import { assets } from './AssetMouthsData';
 
 interface Props {
     setAssetMouth: any;
@@ -7,14 +7,13 @@ interface Props {
 export default function AssetMouths(props: Props) {
     return (
         <>
-            {assets.map(asset => {
-                if (asset.category === 'mouth') {
-                    return <div
-                        key={asset.id} 
-                        onClick={() => props.setAssetMouth(asset.imageUrl)}
-                        className="rounded-2xl border border-1 hover:cursor-pointer">{asset.id}</div>
+            {assets.map((asset, index) => {
+                return <div
+                    key={index} 
+                    onClick={() => props.setAssetMouth(asset.imageUrl)}
+                    className="rounded-2xl border border-1 hover:cursor-pointer">{index}</div>
                 }
-            })}
+            )}
         </>
     )
 }
