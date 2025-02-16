@@ -97,7 +97,7 @@ export default function Home() {
                     <a 
                         id="pfp-download"
                         download="beth-pfp.png"
-                        className="flex justify-center gap-2 mb-6 font-semibold py-6 w-full rounded-md text-white bg-[#ca41c5] rounded-3xl shadow-[8px_8px_0_0_rgba(0,0,0)] hover:cursor-pointer hover:bg-[#db52d6] focus:shadow-none focus:border-none">
+                        className="flex justify-center gap-2 mb-6 font-semibold py-6 w-full rounded-md text-white bg-[#ca41c5] rounded-3xl shadow-[8px_8px_0_0_rgba(0,0,0)] hover:cursor-pointer hover:bg-[#ec63e7] focus:shadow-none focus:border-none">
 
                         <div className="flex align-center text-sm sm:text-xl">
                             DOWNLOAD YOUR BETH PFP
@@ -129,7 +129,7 @@ export default function Home() {
                             <div className="flex items-center gap-2">
                                 <div
                                     onClick={() => { resetImage(); }} 
-                                    className="flex justify-center px-4 py-2 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[128px] text-center hover:cursor-pointer hover:bg-[#11b3ff]">
+                                    className="flex justify-center px-4 py-2 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[128px] text-center hover:cursor-pointer hover:bg-[#22c4ff]">
                                         <div className="flex align-center text-[12px] sm:text-base">
                                             RESET
 
@@ -143,7 +143,7 @@ export default function Home() {
 
                                 <div
                                     onClick={() => { randomImage(); }} 
-                                    className="flex justify-center px-4 py-2 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[128px] text-center hover:cursor-pointer hover:bg-[#11b3ff]">
+                                    className="flex justify-center px-4 py-2 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[128px] text-center hover:cursor-pointer hover:bg-[#22c4ff]">
                                         <div className="flex align-center text-[12px] sm:text-base">
                                             RANDOM
 
@@ -161,25 +161,25 @@ export default function Home() {
                         <div className="flex justify-between text-[12px] sm:text-base">
                             <div
                                 onClick={() => { setCategory('hats') }}  
-                                className="p-3 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[120px] sm:w-[136px] text-center hover:cursor-pointer hover:bg-[#11b3ff]">
+                                className="p-3 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[120px] sm:w-[136px] text-center hover:cursor-pointer hover:bg-[#22c4ff]">
                                 HATS
                             </div>
 
                             <div
                                 onClick={() => { setCategory('eyes') }}  
-                                className="p-3 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[120px] sm:w-[136px] text-center hover:cursor-pointer hover:bg-[#11b3ff]">
+                                className="p-3 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[120px] sm:w-[136px] text-center hover:cursor-pointer hover:bg-[#22c4ff]">
                                 EYES
                             </div>                              
 
                             <div
                                 onClick={() => { setCategory('mouths') }}  
-                                className="p-3 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[120px] sm:w-[136px] text-center hover:cursor-pointer hover:bg-[#11b3ff]">
+                                className="p-3 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[120px] sm:w-[136px] text-center hover:cursor-pointer hover:bg-[#22c4ff]">
                                 MOUTHS
                             </div>
 
                             <div
                                 onClick={() => { setCategory('accessories') }}  
-                                className="p-3 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[120px] sm:w-[136px] text-center hover:cursor-pointer hover:bg-[#11b3ff]">
+                                className="p-3 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[120px] sm:w-[136px] text-center hover:cursor-pointer hover:bg-[#22c4ff]">
                                 ACCESSORIES
                             </div>                                 
                         </div>
