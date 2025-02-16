@@ -12,10 +12,10 @@ import AssetAccessories from "./AssetAccessories";
 export default function Home() {
     const [category, setCategory] = useState('hats');
 
-    const [assetHat, setAssetHat] = useState('');
-    const [assetEyes, setAssetEyes] = useState('');
-    const [assetMouth, setAssetMouth] = useState('');
-    const [assetAccessory, setAssetAccessory] = useState('');
+    const [assetHat, setAssetHat] = useState(0);
+    const [assetEyes, setAssetEyes] = useState(0);
+    const [assetMouth, setAssetMouth] = useState(0);
+    const [assetAccessory, setAssetAccessory] = useState(0);
 
     const handleImageLoad = () => {
         const pfpDownload: HTMLAnchorElement = document.querySelector('#pfp-download') as HTMLAnchorElement;
@@ -23,6 +23,11 @@ export default function Home() {
     
         const images: Array<HTMLImageElement> = [];
         images.push(pfpImg);
+
+        console.log(assetHat);
+        console.log(assetEyes);
+        console.log(assetMouth);
+        console.log(assetAccessory);
 
         if (assetHat) {
             //images.push(document.querySelector('.hat-' + assetHat) as HTMLImageElement);
@@ -57,18 +62,23 @@ export default function Home() {
         handleImageLoad();
     });
 
+    const randomImageSelector = (cat: string) => {
+        const count: number = document.querySelectorAll('.' + cat + '-img').length;
+        return Math.floor(Math.random() * count) + 1;
+    };
+
     const resetImage = () => {
-        setAssetHat('');
-        setAssetEyes('');
-        setAssetMouth('');
-        setAssetAccessory('');
+        setAssetHat(0);
+        setAssetEyes(0);
+        setAssetMouth(0);
+        setAssetAccessory(0);
     }
 
     const randomImage = () => {
-        setAssetHat('');
-        setAssetEyes('');
-        setAssetMouth('');
-        setAssetAccessory('');
+        setAssetHat(randomImageSelector('hat'));
+        setAssetEyes(randomImageSelector('eyes'));
+        setAssetMouth(randomImageSelector('mouth'));
+        setAssetAccessory(randomImageSelector('accessory'));
     }  
 
     return (
@@ -175,11 +185,22 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 border border-1 p-4 rounded-3xl">
-                        {category === 'hats' && <AssetHats setAssetHat={setAssetHat} />}
-                        {category === 'eyes' && <AssetEyes setAssetEyes={setAssetEyes} />}
-                        {category === 'mouths' && <AssetMouths setAssetMouth={setAssetMouth} />}
-                        {category === 'accessories' && <AssetAccessories setAssetAccessory={setAssetAccessory} />}
+                    <div className="border border-1 p-4 rounded-3xl">
+                        <div className={category == 'hats' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
+                            <AssetHats setAssetHat={setAssetHat} />
+                        </div>
+
+                        <div className={category == 'eyes' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
+                            <AssetEyes setAssetEyes={setAssetEyes} />
+                        </div>
+
+                        <div className={category == 'mouths' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
+                            <AssetMouths setAssetMouth={setAssetMouth} />
+                        </div>
+
+                        <div className={category == 'accessories' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
+                            <AssetAccessories setAssetAccessory={setAssetAccessory} />
+                        </div>
                     </div>
                 </div>
             </div>

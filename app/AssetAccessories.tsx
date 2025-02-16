@@ -8,12 +8,13 @@ export default function AssetAccessories(props: Props) {
     return (
         <>
             {assets.map((asset, index) => {
-                const styling: string = 'accessory-' + index + ' rounded-2xl border border-1 hover:cursor-pointer';
+                const id: number = index + 1;
+                const styling: string = 'accessory-' + id + ' accessory-img rounded-2xl border border-1 hover:cursor-pointer';
 
                 return <div
-                    key={index} 
-                    onClick={() => props.setAssetAccessory(index)}
-                    className={styling}>{index}</div>
+                    key={id} 
+                    onClick={() => props.setAssetAccessory(id)}
+                    className={styling}>{id}</div>
                 }
             )}
         </>
