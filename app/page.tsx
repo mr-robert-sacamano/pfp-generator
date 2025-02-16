@@ -24,11 +24,6 @@ export default function Home() {
         const images: Array<HTMLImageElement> = [];
         images.push(pfpImg);
 
-        console.log(assetHat);
-        console.log(assetEyes);
-        console.log(assetMouth);
-        console.log(assetAccessory);
-
         if (assetHat) {
             //images.push(document.querySelector('.hat-' + assetHat) as HTMLImageElement);
         }
