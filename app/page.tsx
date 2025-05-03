@@ -92,7 +92,7 @@ export default function Home() {
 
         if (context) {
             images.forEach((image, index) => {
-                context.drawImage(image, 0, 0);
+                context.drawImage(image, 0, 0, 600, 600);
             });
         }
         
