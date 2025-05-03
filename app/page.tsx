@@ -54,18 +54,34 @@ export default function Home() {
         images.push(document.querySelector('#pfp-head') as HTMLImageElement);
 
         if (assetHair) {
-            images.push(document.querySelector('.hair-' + assetHair + ' img') as HTMLImageElement);
+            let img = document.querySelector('.hair-' + assetHair + ' img') as HTMLImageElement;
+            img.width = 600;
+            img.height = 600;
+
+            images.push(img);
         }
 
         if (assetMouth) {
-            images.push(document.querySelector('.mouth-' + assetMouth + ' img') as HTMLImageElement);
+            let img = document.querySelector('.mouth-' + assetMouth + ' img') as HTMLImageElement;
+            img.width = 600;
+            img.height = 600;
+
+            images.push(img);
         }
 
         if (assetEars) {
-            images.push(document.querySelector('.ears-' + assetEars + ' img') as HTMLImageElement);
+            let img = document.querySelector('.ears-' + assetEars + ' img') as HTMLImageElement;
+            img.width = 600;
+            img.height = 600;
+
+            images.push(img);
         }
         if (assetEyes) {
-            images.push(document.querySelector('.eyes-' + assetEyes + ' img') as HTMLImageElement);
+            let img = document.querySelector('.eyes-' + assetEyes + ' img') as HTMLImageElement;
+            img.width = 600;
+            img.height = 600;
+
+            images.push(img);
         }
 
         const canvas = document.createElement('canvas');
@@ -76,7 +92,6 @@ export default function Home() {
 
         if (context) {
             images.forEach((image, index) => {
-                console.log(image);
                 context.drawImage(image, 0, 0);
             });
         }
