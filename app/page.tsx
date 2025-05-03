@@ -177,7 +177,6 @@ export default function Home() {
                         className="hidden"
                         width={600}
                         height={600}
-                        priority
                         />
 
                     <Image
