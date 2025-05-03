@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 
 import { assets } from './data/AssetTorsoData';
@@ -14,7 +16,7 @@ export default function AssetTorso(props: Props) {
                 const styling: string = 'torso-' + id + ' torso-img rounded-2xl border border-1 overflow-hidden hover:cursor-pointer';
 
                 return <div
-                    key={id} 
+                    key={id + '-torso'} 
                     onClick={() => props.setAssetTorso(id)}
                     className={styling}>
                         <Image
@@ -22,6 +24,7 @@ export default function AssetTorso(props: Props) {
                             src={asset.imageUrl}
                             width={600}
                             height={600}
+                            priority
                         />
                     </div>
                 }

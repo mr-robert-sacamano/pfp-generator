@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 
 import { assets } from './data/AssetEarsData';
@@ -14,7 +16,7 @@ export default function AssetEars(props: Props) {
                 const styling: string = 'ears-' + id + ' ears-img rounded-2xl border border-1 overflow-hidden hover:cursor-pointer';
 
                 return <div
-                    key={id} 
+                    key={id + '-ears'} 
                     onClick={() => props.setAssetEars(id)}
                     className={styling}>
                         <Image
@@ -22,6 +24,7 @@ export default function AssetEars(props: Props) {
                             src={asset.imageUrl}
                             width={600}
                             height={600}
+                            priority
                         />
                     </div>
                 }

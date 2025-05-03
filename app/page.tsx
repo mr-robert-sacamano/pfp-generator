@@ -13,11 +13,11 @@ import AssetTorso from "./AssetTorso";
 export default function Home() {
     const [category, setCategory] = useState('ears');
 
-    const [assetEars, setAssetEars] = useState(0);
-    const [assetEyes, setAssetEyes] = useState(0);
-    const [assetHair, setAssetHair] = useState(0);
-    const [assetMouth, setAssetMouth] = useState(0);
-    const [assetTorso, setAssetTorso] = useState(0);
+    const [assetEars, setAssetEars] = useState(1);
+    const [assetEyes, setAssetEyes] = useState(1);
+    const [assetHair, setAssetHair] = useState(1);
+    //const [assetMouth, setAssetMouth] = useState(1);
+    const [assetTorso, setAssetTorso] = useState(1);
 
     const pfpKeyGenerator = () => {
         let result = '';
@@ -35,12 +35,14 @@ export default function Home() {
     const [pfpSrc, setPfpSrc] = useState(beth.src);
     const [pfpKey, setPfpKey] = useState(pfpKeyGenerator());
 
+    const [pfpDownloadHref, setPfpDownloadHref] = useState(beth.src);
+
     const handleImageLoad = () => {
         const pfpDownload: HTMLAnchorElement = document.querySelector('#pfp-download') as HTMLAnchorElement;
         const pfpImg: HTMLImageElement = document.querySelector('#pfp') as HTMLImageElement;
     
         const images: Array<HTMLImageElement> = [];
-        images.push(pfpImg);
+        //images.push(pfpImg);
 
         if (assetTorso) {
             images.push(document.querySelector('.torso-' + assetTorso + ' img') as HTMLImageElement);
@@ -52,9 +54,12 @@ export default function Home() {
             images.push(document.querySelector('.hair-' + assetHair + ' img') as HTMLImageElement);
         }
 
+        /*
         if (assetMouth) {
             images.push(document.querySelector('.mouth-' + assetMouth + ' img') as HTMLImageElement);
         }
+        */
+
         if (assetEars) {
             images.push(document.querySelector('.ears-' + assetEars + ' img') as HTMLImageElement);
         }
@@ -70,19 +75,22 @@ export default function Home() {
 
         if (context) {
             images.forEach((image, index) => {
+                console.log(image);
                 context.drawImage(image, 0, 0);
             });
         }
         
         setPfpSrc(canvas.toDataURL('image/jpg'));
-        pfpDownload.href = canvas.toDataURL('image/jpg');
+        setPfpKey(pfpKeyGenerator());
+
+        setPfpDownloadHref(canvas.toDataURL('image/jpg'));
     }
 
     useEffect(() => {
         handleImageLoad();
-    });
+    }, [assetEars, assetEyes, assetHair, /*assetMouth,*/ assetTorso]);
 
-    const randomImageSelector = (cat: string) => {
+    const randomImageSelector = (cat: string) => {        
         const count: number = document.querySelectorAll('.' + cat + '-img').length;
         return Math.floor(Math.random() * count) + 1;
     };
@@ -93,7 +101,7 @@ export default function Home() {
         //TODO Base
 
         setAssetHair(0);
-        setAssetMouth(0);        
+        //setAssetMouth(0);        
         setAssetEars(0);
         setAssetEyes(0);
     }
@@ -104,7 +112,7 @@ export default function Home() {
         //TODO Base
 
         setAssetHair(randomImageSelector('hair'));
-        setAssetMouth(randomImageSelector('mouth'));
+        //setAssetMouth(randomImageSelector('mouth'));
         setAssetEars(randomImageSelector('ears'));
         setAssetEyes(randomImageSelector('eyes'));
     }  
@@ -124,7 +132,7 @@ export default function Home() {
                 <div className="grid grid-cols-1 pt-12 pb-1">
                     <a 
                         id="pfp-download"
-                        download="beth-pfp.png"
+                        download={pfpDownloadHref}
                         className="flex justify-center gap-2 mb-6 font-semibold py-6 w-full rounded-md text-white bg-[#ca41c5] rounded-3xl shadow-[8px_8px_0_0_rgba(0,0,0)] hover:cursor-pointer hover:bg-[#ec63e7]">
 
                         <div className="flex align-center text-sm sm:text-xl">
@@ -148,7 +156,6 @@ export default function Home() {
                         className="max-w-full border-4 border-black rounded-3xl object-fit"
                         width={600}
                         height={600}
-                        onLoad={handleImageLoad}
                         />
                 </div>
 

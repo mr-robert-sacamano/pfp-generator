@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 
 import { assets } from './data/AssetEyesData';
@@ -14,7 +16,7 @@ export default function AssetEyes(props: Props) {
                 const styling: string = 'eyes-' + id + ' eyes-img rounded-2xl border border-1 overflow-hidden hover:cursor-pointer';
 
                 return <div
-                    key={id} 
+                    key={id + '-eyes'} 
                     onClick={() => props.setAssetEyes(id)}
                     className={styling}>
                         <Image
@@ -22,6 +24,7 @@ export default function AssetEyes(props: Props) {
                             src={asset.imageUrl}
                             width={600}
                             height={600}
+                            priority
                         />
                     </div>
                 }
