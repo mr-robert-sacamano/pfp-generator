@@ -3,7 +3,9 @@
 import { useState, useEffect } from "react";
 import Image from 'next/image';
 
-import beth from '../public/image/beth.jpg';
+import background from '../public/image/asset/background.png';
+import head from '../public/image/asset/head.png';
+
 import AssetEars from "./AssetEars";
 import AssetEyes from "./AssetEyes";
 import AssetHair from "./AssetHair";
@@ -11,14 +13,6 @@ import AssetMouth from "./AssetMouth";
 import AssetTorso from "./AssetTorso";
 
 export default function Home() {
-    const [category, setCategory] = useState('ears');
-
-    const [assetEars, setAssetEars] = useState(1);
-    const [assetEyes, setAssetEyes] = useState(1);
-    const [assetHair, setAssetHair] = useState(1);
-    //const [assetMouth, setAssetMouth] = useState(1);
-    const [assetTorso, setAssetTorso] = useState(1);
-
     const pfpKeyGenerator = () => {
         let result = '';
         
@@ -32,33 +26,40 @@ export default function Home() {
         return result;
     }
 
-    const [pfpSrc, setPfpSrc] = useState(beth.src);
+    const [pfpSrc, setPfpSrc] = useState(background.src);
     const [pfpKey, setPfpKey] = useState(pfpKeyGenerator());
 
-    const [pfpDownloadHref, setPfpDownloadHref] = useState(beth.src);
+    const [pfpDownloadHref, setPfpDownloadHref] = useState(background.src);
+
+    const [category, setCategory] = useState('ears');
+
+    const [assetEars, setAssetEars] = useState(1);
+    const [assetEyes, setAssetEyes] = useState(1);
+    const [assetHair, setAssetHair] = useState(1);
+    const [assetMouth, setAssetMouth] = useState(1);
+    const [assetTorso, setAssetTorso] = useState(1);
 
     const handleImageLoad = () => {
         const pfpDownload: HTMLAnchorElement = document.querySelector('#pfp-download') as HTMLAnchorElement;
         const pfpImg: HTMLImageElement = document.querySelector('#pfp') as HTMLImageElement;
     
         const images: Array<HTMLImageElement> = [];
-        //images.push(pfpImg);
+
+        images.push(document.querySelector('#pfp-background') as HTMLImageElement);
 
         if (assetTorso) {
             images.push(document.querySelector('.torso-' + assetTorso + ' img') as HTMLImageElement);
         }        
 
-        //TODO base img
+        images.push(document.querySelector('#pfp-head') as HTMLImageElement);
 
         if (assetHair) {
             images.push(document.querySelector('.hair-' + assetHair + ' img') as HTMLImageElement);
         }
 
-        /*
         if (assetMouth) {
             images.push(document.querySelector('.mouth-' + assetMouth + ' img') as HTMLImageElement);
         }
-        */
 
         if (assetEars) {
             images.push(document.querySelector('.ears-' + assetEars + ' img') as HTMLImageElement);
@@ -75,20 +76,19 @@ export default function Home() {
 
         if (context) {
             images.forEach((image, index) => {
-                console.log(image);
                 context.drawImage(image, 0, 0);
             });
         }
         
-        setPfpSrc(canvas.toDataURL('image/jpg'));
+        setPfpSrc(canvas.toDataURL('image/png'));
         setPfpKey(pfpKeyGenerator());
 
-        setPfpDownloadHref(canvas.toDataURL('image/jpg'));
+        setPfpDownloadHref(canvas.toDataURL('image/png'));
     }
 
     useEffect(() => {
         handleImageLoad();
-    }, [assetEars, assetEyes, assetHair, /*assetMouth,*/ assetTorso]);
+    }, [assetEars, assetEyes, assetHair, assetMouth, assetTorso]);
 
     const randomImageSelector = (cat: string) => {        
         const count: number = document.querySelectorAll('.' + cat + '-img').length;
@@ -96,23 +96,17 @@ export default function Home() {
     };
 
     const resetImage = () => {
-        setAssetTorso(0);
-
-        //TODO Base
-
-        setAssetHair(0);
-        //setAssetMouth(0);        
-        setAssetEars(0);
-        setAssetEyes(0);
+        setAssetTorso(1);
+        setAssetHair(1);
+        setAssetMouth(1);        
+        setAssetEars(1);
+        setAssetEyes(1);
     }
 
     const randomImage = () => {
         setAssetTorso(randomImageSelector('torso'));
-        
-        //TODO Base
-
         setAssetHair(randomImageSelector('hair'));
-        //setAssetMouth(randomImageSelector('mouth'));
+        setAssetMouth(randomImageSelector('mouth'));
         setAssetEars(randomImageSelector('ears'));
         setAssetEyes(randomImageSelector('eyes'));
     }  
@@ -132,7 +126,8 @@ export default function Home() {
                 <div className="grid grid-cols-1 pt-12 pb-1">
                     <a 
                         id="pfp-download"
-                        download={pfpDownloadHref}
+                        download="beth-pfp.png"
+                        href={pfpDownloadHref}
                         className="flex justify-center gap-2 mb-6 font-semibold py-6 w-full rounded-md text-white bg-[#ca41c5] rounded-3xl shadow-[8px_8px_0_0_rgba(0,0,0)] hover:cursor-pointer hover:bg-[#ec63e7]">
 
                         <div className="flex align-center text-sm sm:text-xl">
@@ -157,6 +152,26 @@ export default function Home() {
                         width={600}
                         height={600}
                         />
+
+                    <Image
+                        alt="Beth Background"
+                        id="pfp-background"
+                        key="pfp-background"
+                        src={background.src}
+                        className="hidden"
+                        width={600}
+                        height={600}
+                        />
+
+                    <Image
+                        alt="Beth Head"
+                        id="pfp-head"
+                        key="pfp-head"
+                        src={head.src}
+                        className="hidden"
+                        width={600}
+                        height={600}
+                        />                        
                 </div>
 
                 <div className="mb-6">

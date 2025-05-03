@@ -5,15 +5,15 @@ export interface AssetEarsData {
 const imgPath: string = '/image/asset/ears/';
 
 export const assets: AssetEarsData[] = [{
-    imageUrl: imgPath + 'a.jpg'
+    imageUrl: imgPath + 'a.png'
 }, {
-    imageUrl: imgPath + 'b.jpg'
+    imageUrl: imgPath + 'b.png'
 }, {
-    imageUrl: imgPath + 'c.jpg'
+    imageUrl: imgPath + 'c.png'
 }, {
-    imageUrl: imgPath + 'd.jpg'
+    imageUrl: imgPath + 'd.png'
 }, {
-    imageUrl: imgPath + 'e.jpg'
+    imageUrl: imgPath + 'e.png'
 }, {
-    imageUrl: imgPath + 'f.jpg'
+    imageUrl: imgPath + 'f.png'
 }]
