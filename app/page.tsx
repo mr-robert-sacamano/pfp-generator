@@ -6,6 +6,12 @@ import Image from 'next/image';
 import background from '../public/image/asset/background.png';
 import head from '../public/image/asset/head.png';
 
+import earsDefault from '../public/image/asset/ears/a.png';
+import eyesDefault from '../public/image/asset/eyes/a.png';
+import hairDefault from '../public/image/asset/hair/a.png';
+import mouthDefault from '../public/image/asset/mouth/a.png';
+import torsoDefault from '../public/image/asset/torso/a.png';
+
 import AssetEars from "./AssetEars";
 import AssetEyes from "./AssetEyes";
 import AssetHair from "./AssetHair";
@@ -33,11 +39,11 @@ export default function Home() {
 
     const [category, setCategory] = useState('ears');
 
-    const [assetEars, setAssetEars] = useState(1);
-    const [assetEyes, setAssetEyes] = useState(1);
-    const [assetHair, setAssetHair] = useState(1);
-    const [assetMouth, setAssetMouth] = useState(1);
-    const [assetTorso, setAssetTorso] = useState(1);
+    const [assetEars, setAssetEars] = useState('default');
+    const [assetEyes, setAssetEyes] = useState('default');
+    const [assetHair, setAssetHair] = useState('default');
+    const [assetMouth, setAssetMouth] = useState('default');
+    const [assetTorso, setAssetTorso] = useState('default');
 
     const handleImageLoad = () => {
         const pfpDownload: HTMLAnchorElement = document.querySelector('#pfp-download') as HTMLAnchorElement;
@@ -48,24 +54,44 @@ export default function Home() {
         images.push(document.querySelector('#pfp-background') as HTMLImageElement);
 
         if (assetTorso) {
-            images.push(document.querySelector('.torso-' + assetTorso + ' img') as HTMLImageElement);
+            if (assetTorso === 'default') {
+                images.push(document.querySelector('#pfp-torso-default') as HTMLImageElement);
+            } else {
+                images.push(document.querySelector('.torso-' + assetTorso + ' img') as HTMLImageElement);
+            }
         }        
 
         images.push(document.querySelector('#pfp-head') as HTMLImageElement);
 
         if (assetHair) {
-            images.push(document.querySelector('.hair-' + assetHair + ' img') as HTMLImageElement);
+            if (assetHair === 'default') {
+                images.push(document.querySelector('#pfp-hair-default') as HTMLImageElement);
+            } else {
+                images.push(document.querySelector('.hair-' + assetHair + ' img') as HTMLImageElement);
+            }
         }
 
         if (assetMouth) {
-            images.push(document.querySelector('.mouth-' + assetMouth + ' img') as HTMLImageElement);
+            if (assetMouth === 'default') {
+                images.push(document.querySelector('#pfp-mouth-default') as HTMLImageElement);
+            } else {
+                images.push(document.querySelector('.mouth-' + assetMouth + ' img') as HTMLImageElement);
+            }
         }
 
         if (assetEars) {
-            images.push(document.querySelector('.ears-' + assetEars + ' img') as HTMLImageElement);
+            if (assetEars === 'default') {
+                images.push(document.querySelector('#pfp-ears-default') as HTMLImageElement);
+            } else {
+                images.push(document.querySelector('.ears-' + assetEars + ' img') as HTMLImageElement);
+            }
         }
         if (assetEyes) {
-            images.push(document.querySelector('.eyes-' + assetEyes + ' img') as HTMLImageElement);
+            if (assetEyes === 'default') {
+                images.push(document.querySelector('#pfp-eyes-default') as HTMLImageElement);
+            } else {
+                images.push(document.querySelector('.eyes-' + assetEyes + ' img') as HTMLImageElement);
+            }
         }
 
         const canvas = document.createElement('canvas');
@@ -172,7 +198,63 @@ export default function Home() {
                         width={600}
                         height={600}
                         priority
-                        />                        
+                        />   
+
+
+                    <Image
+                        alt="Beth Ears Default"
+                        id="pfp-ears-default"
+                        key="pfp-ears-default"
+                        src={earsDefault.src}
+                        className="hidden"
+                        width={600}
+                        height={600}
+                        priority
+                        />   
+
+                    <Image
+                        alt="Beth Eyes Default"
+                        id="pfp-eyes-default"
+                        key="pfp-eyes-default"
+                        src={eyesDefault.src}
+                        className="hidden"
+                        width={600}
+                        height={600}
+                        priority
+                        />
+
+                    <Image
+                        alt="Beth Hair Default"
+                        id="pfp-hair-default"
+                        key="pfp-hair-default"
+                        src={hairDefault.src}
+                        className="hidden"
+                        width={600}
+                        height={600}
+                        priority
+                        />
+
+                    <Image
+                        alt="Beth Mouth Default"
+                        id="pfp-mouth-default"
+                        key="pfp-mouth-default"
+                        src={mouthDefault.src}
+                        className="hidden"
+                        width={600}
+                        height={600}
+                        priority
+                        />
+
+                    <Image
+                        alt="Beth Torso Default"
+                        id="pfp-torso-default"
+                        key="pfp-torso-default"
+                        src={torsoDefault.src}
+                        className="hidden"
+                        width={600}
+                        height={600}
+                        priority
+                        />                                                                                                                                           
                 </div>
 
                 <div className="mb-6">
