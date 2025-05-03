@@ -4,6 +4,7 @@ import { assets } from './data/AssetHairData';
 
 interface Props {
     setAssetHair: any;
+    setDrawImageFlag: any;
 }
 
 export default function AssetHair(props: Props) {
@@ -15,7 +16,7 @@ export default function AssetHair(props: Props) {
 
                 return <div
                     key={id + '-hair'} 
-                    onClick={() => props.setAssetHair(id)}
+                    onClick={() => { props.setDrawImageFlag(true); props.setAssetHair(id); }}
                     className={styling}>
                         <Image
                             alt={id.toString()}

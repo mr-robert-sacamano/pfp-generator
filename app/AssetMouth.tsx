@@ -4,6 +4,7 @@ import { assets } from './data/AssetMouthData';
 
 interface Props {
     setAssetMouth: any;
+    setDrawImageFlag: any;
 }
 
 export default function AssetEars(props: Props) {
@@ -15,7 +16,7 @@ export default function AssetEars(props: Props) {
 
                 return <div
                     key={id + '-mouth'} 
-                    onClick={() => props.setAssetMouth(id)}
+                    onClick={() => { props.setDrawImageFlag(true); props.setAssetMouth(id); }}
                     className={styling}>
                         <Image
                             alt={id.toString()}

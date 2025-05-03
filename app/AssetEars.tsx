@@ -4,6 +4,7 @@ import { assets } from './data/AssetEarsData';
 
 interface Props {
     setAssetEars: any;
+    setDrawImageFlag: any;
 }
 
 export default function AssetEars(props: Props) {
@@ -15,7 +16,7 @@ export default function AssetEars(props: Props) {
 
                 return <div
                     key={id + '-ears'} 
-                    onClick={() => props.setAssetEars(id)}
+                    onClick={() => { props.setDrawImageFlag(true); props.setAssetEars(id); }}
                     className={styling}>
                         <Image
                             alt={id.toString()}

@@ -4,6 +4,7 @@ import { assets } from './data/AssetTorsoData';
 
 interface Props {
     setAssetTorso: any;
+    setDrawImageFlag: any;
 }
 
 export default function AssetTorso(props: Props) {
@@ -15,7 +16,7 @@ export default function AssetTorso(props: Props) {
 
                 return <div
                     key={id + '-torso'} 
-                    onClick={() => props.setAssetTorso(id)}
+                    onClick={() => { props.setDrawImageFlag(true); props.setAssetTorso(id); }}
                     className={styling}>
                         <Image
                             alt={id.toString()}

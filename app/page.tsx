@@ -5,12 +5,7 @@ import Image from 'next/image';
 
 import background from '../public/image/asset/background.png';
 import head from '../public/image/asset/head.png';
-
-import earsDefault from '../public/image/asset/ears/a.png';
-import eyesDefault from '../public/image/asset/eyes/a.png';
-import hairDefault from '../public/image/asset/hair/a.png';
-import mouthDefault from '../public/image/asset/mouth/a.png';
-import torsoDefault from '../public/image/asset/torso/a.png';
+import bethDefault from '../public/image/asset/default.png';
 
 import AssetEars from "./AssetEars";
 import AssetEyes from "./AssetEyes";
@@ -32,18 +27,20 @@ export default function Home() {
         return result;
     }
 
-    const [pfpSrc, setPfpSrc] = useState(background.src);
+    const [pfpSrc, setPfpSrc] = useState(bethDefault.src);
     const [pfpKey, setPfpKey] = useState(pfpKeyGenerator());
 
-    const [pfpDownloadHref, setPfpDownloadHref] = useState(background.src);
+    const [pfpDownloadHref, setPfpDownloadHref] = useState(bethDefault.src);
 
     const [category, setCategory] = useState('ears');
 
-    const [assetEars, setAssetEars] = useState('default');
-    const [assetEyes, setAssetEyes] = useState('default');
-    const [assetHair, setAssetHair] = useState('default');
-    const [assetMouth, setAssetMouth] = useState('default');
-    const [assetTorso, setAssetTorso] = useState('default');
+    const [drawImageFlag, setDrawImageFlag] = useState(false);
+
+    const [assetEars, setAssetEars] = useState('1');
+    const [assetEyes, setAssetEyes] = useState('1');
+    const [assetHair, setAssetHair] = useState('1');
+    const [assetMouth, setAssetMouth] = useState('1');
+    const [assetTorso, setAssetTorso] = useState('1');
 
     const handleImageLoad = () => {
         const pfpDownload: HTMLAnchorElement = document.querySelector('#pfp-download') as HTMLAnchorElement;
@@ -54,44 +51,24 @@ export default function Home() {
         images.push(document.querySelector('#pfp-background') as HTMLImageElement);
 
         if (assetTorso) {
-            if (assetTorso === 'default') {
-                images.push(document.querySelector('#pfp-torso-default') as HTMLImageElement);
-            } else {
-                images.push(document.querySelector('.torso-' + assetTorso + ' img') as HTMLImageElement);
-            }
+            images.push(document.querySelector('.torso-' + assetTorso + ' img') as HTMLImageElement);
         }        
 
         images.push(document.querySelector('#pfp-head') as HTMLImageElement);
 
         if (assetHair) {
-            if (assetHair === 'default') {
-                images.push(document.querySelector('#pfp-hair-default') as HTMLImageElement);
-            } else {
-                images.push(document.querySelector('.hair-' + assetHair + ' img') as HTMLImageElement);
-            }
+            images.push(document.querySelector('.hair-' + assetHair + ' img') as HTMLImageElement);
         }
 
         if (assetMouth) {
-            if (assetMouth === 'default') {
-                images.push(document.querySelector('#pfp-mouth-default') as HTMLImageElement);
-            } else {
-                images.push(document.querySelector('.mouth-' + assetMouth + ' img') as HTMLImageElement);
-            }
+            images.push(document.querySelector('.mouth-' + assetMouth + ' img') as HTMLImageElement);
         }
 
         if (assetEars) {
-            if (assetEars === 'default') {
-                images.push(document.querySelector('#pfp-ears-default') as HTMLImageElement);
-            } else {
-                images.push(document.querySelector('.ears-' + assetEars + ' img') as HTMLImageElement);
-            }
+            images.push(document.querySelector('.ears-' + assetEars + ' img') as HTMLImageElement);
         }
         if (assetEyes) {
-            if (assetEyes === 'default') {
-                images.push(document.querySelector('#pfp-eyes-default') as HTMLImageElement);
-            } else {
-                images.push(document.querySelector('.eyes-' + assetEyes + ' img') as HTMLImageElement);
-            }
+            images.push(document.querySelector('.eyes-' + assetEyes + ' img') as HTMLImageElement);
         }
 
         const canvas = document.createElement('canvas');
@@ -112,8 +89,12 @@ export default function Home() {
         setPfpDownloadHref(canvas.toDataURL('image/png'));
     }
 
-    useEffect(() => {
-        handleImageLoad();
+    useEffect(() => {        
+        if (drawImageFlag) {
+            handleImageLoad();
+        }
+
+        setDrawImageFlag(false);
     }, [assetEars, assetEyes, assetHair, assetMouth, assetTorso]);
 
     const randomImageSelector = (cat: string) => {        
@@ -122,11 +103,11 @@ export default function Home() {
     };
 
     const resetImage = () => {
-        setAssetTorso("1");
-        setAssetHair("1");
-        setAssetMouth("1");        
-        setAssetEars("1");
-        setAssetEyes("1");
+        setAssetTorso('1');
+        setAssetHair('1');
+        setAssetMouth('1');        
+        setAssetEars('1');
+        setAssetEyes('1');
     }
 
     const randomImage = () => {
@@ -187,6 +168,7 @@ export default function Home() {
                         className="hidden"
                         width={600}
                         height={600}
+                        priority
                         />
 
                     <Image
@@ -198,63 +180,7 @@ export default function Home() {
                         width={600}
                         height={600}
                         priority
-                        />   
-
-
-                    <Image
-                        alt="Beth Ears Default"
-                        id="pfp-ears-default"
-                        key="pfp-ears-default"
-                        src={earsDefault.src}
-                        className="hidden"
-                        width={600}
-                        height={600}
-                        priority
-                        />   
-
-                    <Image
-                        alt="Beth Eyes Default"
-                        id="pfp-eyes-default"
-                        key="pfp-eyes-default"
-                        src={eyesDefault.src}
-                        className="hidden"
-                        width={600}
-                        height={600}
-                        priority
-                        />
-
-                    <Image
-                        alt="Beth Hair Default"
-                        id="pfp-hair-default"
-                        key="pfp-hair-default"
-                        src={hairDefault.src}
-                        className="hidden"
-                        width={600}
-                        height={600}
-                        priority
-                        />
-
-                    <Image
-                        alt="Beth Mouth Default"
-                        id="pfp-mouth-default"
-                        key="pfp-mouth-default"
-                        src={mouthDefault.src}
-                        className="hidden"
-                        width={600}
-                        height={600}
-                        priority
-                        />
-
-                    <Image
-                        alt="Beth Torso Default"
-                        id="pfp-torso-default"
-                        key="pfp-torso-default"
-                        src={torsoDefault.src}
-                        className="hidden"
-                        width={600}
-                        height={600}
-                        priority
-                        />                                                                                                                                           
+                        />                                                                                                                                          
                 </div>
 
                 <div className="mb-6">
@@ -327,23 +253,23 @@ export default function Home() {
 
                     <div className="border border-2 p-4 rounded-3xl">
                         <div className={category == 'ears' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
-                            <AssetEars setAssetEars={setAssetEars} />
+                            <AssetEars setAssetEars={setAssetEars} setDrawImageFlag={setDrawImageFlag} />
                         </div>
 
                         <div className={category == 'eyes' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
-                            <AssetEyes setAssetEyes={setAssetEyes} />
+                            <AssetEyes setAssetEyes={setAssetEyes} setDrawImageFlag={setDrawImageFlag} />
                         </div>
 
                         <div className={category == 'mouth' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
-                            <AssetMouth setAssetMouth={setAssetMouth} />
+                            <AssetMouth setAssetMouth={setAssetMouth} setDrawImageFlag={setDrawImageFlag} />
                         </div>
 
                         <div className={category == 'hair' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
-                            <AssetHair setAssetHair={setAssetHair} />
+                            <AssetHair setAssetHair={setAssetHair} setDrawImageFlag={setDrawImageFlag} />
                         </div>
 
                         <div className={category == 'torso' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
-                            <AssetTorso setAssetTorso={setAssetTorso} />
+                            <AssetTorso setAssetTorso={setAssetTorso} setDrawImageFlag={setDrawImageFlag} />
                         </div>
                     </div>
                 </div>

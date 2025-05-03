@@ -4,6 +4,7 @@ import { assets } from './data/AssetEyesData';
 
 interface Props {
     setAssetEyes: any;
+    setDrawImageFlag: any;
 }
 
 export default function AssetEyes(props: Props) {
@@ -15,7 +16,7 @@ export default function AssetEyes(props: Props) {
 
                 return <div
                     key={id + '-eyes'} 
-                    onClick={() => props.setAssetEyes(id)}
+                    onClick={() => { props.setDrawImageFlag(true); props.setAssetEyes(id); }}
                     className={styling}>
                         <Image
                             alt={id.toString()}
