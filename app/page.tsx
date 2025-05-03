@@ -54,34 +54,18 @@ export default function Home() {
         images.push(document.querySelector('#pfp-head') as HTMLImageElement);
 
         if (assetHair) {
-            let img = document.querySelector('.hair-' + assetHair + ' img') as HTMLImageElement;
-            img.width = 600;
-            img.height = 600;
-
-            images.push(img);
+            images.push(document.querySelector('.hair-' + assetHair + ' img') as HTMLImageElement);
         }
 
         if (assetMouth) {
-            let img = document.querySelector('.mouth-' + assetMouth + ' img') as HTMLImageElement;
-            img.width = 600;
-            img.height = 600;
-
-            images.push(img);
+            images.push(document.querySelector('.mouth-' + assetMouth + ' img') as HTMLImageElement);
         }
 
         if (assetEars) {
-            let img = document.querySelector('.ears-' + assetEars + ' img') as HTMLImageElement;
-            img.width = 600;
-            img.height = 600;
-
-            images.push(img);
+            images.push(document.querySelector('.ears-' + assetEars + ' img') as HTMLImageElement);
         }
         if (assetEyes) {
-            let img = document.querySelector('.eyes-' + assetEyes + ' img') as HTMLImageElement;
-            img.width = 600;
-            img.height = 600;
-
-            images.push(img);
+            images.push(document.querySelector('.eyes-' + assetEyes + ' img') as HTMLImageElement);
         }
 
         const canvas = document.createElement('canvas');
