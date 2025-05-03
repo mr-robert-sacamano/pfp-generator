@@ -118,15 +118,15 @@ export default function Home() {
 
     const randomImageSelector = (cat: string) => {        
         const count: number = document.querySelectorAll('.' + cat + '-img').length;
-        return Math.floor(Math.random() * count) + 1;
+        return (Math.floor(Math.random() * count) + 1).toString();
     };
 
     const resetImage = () => {
-        setAssetTorso(1);
-        setAssetHair(1);
-        setAssetMouth(1);        
-        setAssetEars(1);
-        setAssetEyes(1);
+        setAssetTorso("1");
+        setAssetHair("1");
+        setAssetMouth("1");        
+        setAssetEars("1");
+        setAssetEyes("1");
     }
 
     const randomImage = () => {
