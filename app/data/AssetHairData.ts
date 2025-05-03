@@ -1,10 +1,10 @@
-export interface AssetEyesData {
+export interface AssetHairData {
     imageUrl: string;
 }
 
-const imgPath: string = '/image/asset/eyes/';
+const imgPath: string = '/image/asset/hair/';
 
-export const assets: AssetEyesData[] = [{
+export const assets: AssetHairData[] = [{
     imageUrl: imgPath + 'a.jpg'
 }, {
     imageUrl: imgPath + 'b.jpg'

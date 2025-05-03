@@ -1,10 +1,10 @@
-export interface AssetEyesData {
+export interface AssetEarsData {
     imageUrl: string;
 }
 
-const imgPath: string = '/image/asset/eyes/';
+const imgPath: string = '/image/asset/ears/';
 
-export const assets: AssetEyesData[] = [{
+export const assets: AssetEarsData[] = [{
     imageUrl: imgPath + 'a.jpg'
 }, {
     imageUrl: imgPath + 'b.jpg'
@@ -16,6 +16,4 @@ export const assets: AssetEyesData[] = [{
     imageUrl: imgPath + 'e.jpg'
 }, {
     imageUrl: imgPath + 'f.jpg'
-}, {
-    imageUrl: imgPath + 'g.jpg'
 }]

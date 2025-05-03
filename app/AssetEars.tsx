@@ -1,21 +1,21 @@
 import Image from 'next/image';
 
-import { assets } from './data/AssetEyesData';
+import { assets } from './data/AssetEarsData';
 
 interface Props {
-    setAssetEyes: any;
+    setAssetEars: any;
 }
 
-export default function AssetEyes(props: Props) {
+export default function AssetEars(props: Props) {
     return (
         <>
             {assets.map((asset, index) => {
                 const id: number = index + 1;
-                const styling: string = 'eyes-' + id + ' eyes-img rounded-2xl border border-1 overflow-hidden hover:cursor-pointer';
+                const styling: string = 'ears-' + id + ' ears-img rounded-2xl border border-1 overflow-hidden hover:cursor-pointer';
 
                 return <div
                     key={id} 
-                    onClick={() => props.setAssetEyes(id)}
+                    onClick={() => props.setAssetEars(id)}
                     className={styling}>
                         <Image
                             alt={id.toString()}

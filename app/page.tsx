@@ -3,19 +3,37 @@
 import { useState, useEffect } from "react";
 import Image from 'next/image';
 
-import beth from '../public/image/beth.png';
-import AssetHats from "./AssetHats";
+import beth from '../public/image/beth.jpg';
+import AssetEars from "./AssetEars";
 import AssetEyes from "./AssetEyes";
-import AssetMouths from "./AssetMouths";
-import AssetAccessories from "./AssetAccessories";
+import AssetHair from "./AssetHair";
+import AssetMouth from "./AssetMouth";
+import AssetTorso from "./AssetTorso";
 
 export default function Home() {
-    const [category, setCategory] = useState('hats');
+    const [category, setCategory] = useState('ears');
 
-    const [assetHat, setAssetHat] = useState(0);
+    const [assetEars, setAssetEars] = useState(0);
     const [assetEyes, setAssetEyes] = useState(0);
+    const [assetHair, setAssetHair] = useState(0);
     const [assetMouth, setAssetMouth] = useState(0);
-    const [assetAccessory, setAssetAccessory] = useState(0);
+    const [assetTorso, setAssetTorso] = useState(0);
+
+    const pfpKeyGenerator = () => {
+        let result = '';
+        
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const charactersLength = characters.length;
+        
+        for (var i = 0; i < charactersLength; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+
+        return result;
+    }
+
+    const [pfpSrc, setPfpSrc] = useState(beth.src);
+    const [pfpKey, setPfpKey] = useState(pfpKeyGenerator());
 
     const handleImageLoad = () => {
         const pfpDownload: HTMLAnchorElement = document.querySelector('#pfp-download') as HTMLAnchorElement;
@@ -24,17 +42,24 @@ export default function Home() {
         const images: Array<HTMLImageElement> = [];
         images.push(pfpImg);
 
-        if (assetHat) {
-            //images.push(document.querySelector('.hat-' + assetHat) as HTMLImageElement);
+        if (assetTorso) {
+            images.push(document.querySelector('.torso-' + assetTorso + ' img') as HTMLImageElement);
+        }        
+
+        //TODO base img
+
+        if (assetHair) {
+            images.push(document.querySelector('.hair-' + assetHair + ' img') as HTMLImageElement);
+        }
+
+        if (assetMouth) {
+            images.push(document.querySelector('.mouth-' + assetMouth + ' img') as HTMLImageElement);
+        }
+        if (assetEars) {
+            images.push(document.querySelector('.ears-' + assetEars + ' img') as HTMLImageElement);
         }
         if (assetEyes) {
-            //images.push(document.querySelector('.eyes-' + assetEyes) as HTMLImageElement);
-        }
-        if (assetMouth) {
-            //images.push(document.querySelector('.mouth-' + assetMouth) as HTMLImageElement);
-        }
-        if (assetAccessory) {
-            //images.push(document.querySelector('.accessory-' + assetAccessory) as HTMLImageElement);
+            images.push(document.querySelector('.eyes-' + assetEyes + ' img') as HTMLImageElement);
         }
 
         const canvas = document.createElement('canvas');
@@ -49,8 +74,8 @@ export default function Home() {
             });
         }
         
-        pfpImg.src = canvas.toDataURL('image/png');
-        pfpDownload.href = canvas.toDataURL('image/png');
+        setPfpSrc(canvas.toDataURL('image/jpg'));
+        pfpDownload.href = canvas.toDataURL('image/jpg');
     }
 
     useEffect(() => {
@@ -63,17 +88,25 @@ export default function Home() {
     };
 
     const resetImage = () => {
-        setAssetHat(0);
+        setAssetTorso(0);
+
+        //TODO Base
+
+        setAssetHair(0);
+        setAssetMouth(0);        
+        setAssetEars(0);
         setAssetEyes(0);
-        setAssetMouth(0);
-        setAssetAccessory(0);
     }
 
     const randomImage = () => {
-        setAssetHat(randomImageSelector('hat'));
-        setAssetEyes(randomImageSelector('eyes'));
+        setAssetTorso(randomImageSelector('torso'));
+        
+        //TODO Base
+
+        setAssetHair(randomImageSelector('hair'));
         setAssetMouth(randomImageSelector('mouth'));
-        setAssetAccessory(randomImageSelector('accessory'));
+        setAssetEars(randomImageSelector('ears'));
+        setAssetEyes(randomImageSelector('eyes'));
     }  
 
     return (
@@ -110,7 +143,8 @@ export default function Home() {
                     <Image
                         alt="Beth PFP"
                         id="pfp"
-                        src={beth.src}
+                        key={pfpKey}
+                        src={pfpSrc}
                         className="max-w-full border-4 border-black rounded-3xl object-fit"
                         width={600}
                         height={600}
@@ -155,9 +189,9 @@ export default function Home() {
 
                         <div className="flex justify-between text-[12px] sm:text-base">
                             <div
-                                onClick={() => { setCategory('hats') }}  
+                                onClick={() => { setCategory('ears') }}  
                                 className="p-3 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[120px] sm:w-[136px] text-center hover:cursor-pointer hover:bg-[#22c4ff]">
-                                HATS
+                                EARS
                             </div>
 
                             <div
@@ -167,34 +201,40 @@ export default function Home() {
                             </div>                              
 
                             <div
-                                onClick={() => { setCategory('mouths') }}  
+                                onClick={() => { setCategory('mouth') }}  
                                 className="p-3 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[120px] sm:w-[136px] text-center hover:cursor-pointer hover:bg-[#22c4ff]">
-                                MOUTHS
+                                MOUTH
                             </div>
 
                             <div
-                                onClick={() => { setCategory('accessories') }}  
+                                onClick={() => { setCategory('hair') }}  
                                 className="p-3 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[120px] sm:w-[136px] text-center hover:cursor-pointer hover:bg-[#22c4ff]">
-                                ACCESSORIES
+                                HAIR
+                            </div>
+
+                            <div
+                                onClick={() => { setCategory('torso') }}  
+                                className="p-3 bg-[#00a2ff] border-2 border-black rounded-3xl shadow-[3px_3px_0_0_rgba(0,0,0)] text-black w-[120px] sm:w-[136px] text-center hover:cursor-pointer hover:bg-[#22c4ff]">
+                                TORSO
                             </div>                                 
                         </div>
                     </div>
 
                     <div className="border border-1 p-4 rounded-3xl">
-                        <div className={category == 'hats' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
-                            <AssetHats setAssetHat={setAssetHat} />
+                        <div className={category == 'ears' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
+                            <AssetEars setAssetEars={setAssetEars} />
                         </div>
 
                         <div className={category == 'eyes' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
                             <AssetEyes setAssetEyes={setAssetEyes} />
                         </div>
 
-                        <div className={category == 'mouths' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
-                            <AssetMouths setAssetMouth={setAssetMouth} />
+                        <div className={category == 'hair' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
+                            <AssetHair setAssetHair={setAssetHair} />
                         </div>
 
-                        <div className={category == 'accessories' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
-                            <AssetAccessories setAssetAccessory={setAssetAccessory} />
+                        <div className={category == 'torso' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
+                            <AssetTorso setAssetTorso={setAssetTorso} />
                         </div>
                     </div>
                 </div>
