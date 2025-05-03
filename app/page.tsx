@@ -95,7 +95,7 @@ export default function Home() {
         }
 
         setDrawImageFlag(false);
-    }, [assetEars, assetEyes, assetHair, assetMouth, assetTorso]);
+    }, [drawImageFlag, assetEars, assetEyes, assetHair, assetMouth, assetTorso]);
 
     const randomImageSelector = (cat: string) => {        
         const count: number = document.querySelectorAll('.' + cat + '-img').length;
@@ -108,6 +108,8 @@ export default function Home() {
         setAssetMouth('1');        
         setAssetEars('1');
         setAssetEyes('1');
+
+        setDrawImageFlag(true);
     }
 
     const randomImage = () => {
@@ -116,6 +118,8 @@ export default function Home() {
         setAssetMouth(randomImageSelector('mouth'));
         setAssetEars(randomImageSelector('ears'));
         setAssetEyes(randomImageSelector('eyes'));
+
+        setDrawImageFlag(true);
     }  
 
     return (
