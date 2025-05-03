@@ -13,7 +13,7 @@ export default function AssetEyes(props: Props) {
         <>
             {assets.map((asset, index) => {
                 const id: number = index + 1;
-                const styling: string = 'eyes-' + id + ' eyes-img rounded-2xl border border-1 overflow-hidden hover:cursor-pointer';
+                const styling: string = 'eyes-' + id + ' eyes-img rounded-2xl border border-2 overflow-hidden hover:cursor-pointer bg-[#b93db4]';
 
                 return <div
                     key={id + '-eyes'} 

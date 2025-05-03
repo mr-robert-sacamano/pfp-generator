@@ -13,7 +13,7 @@ export default function AssetTorso(props: Props) {
         <>
             {assets.map((asset, index) => {
                 const id: number = index + 1;
-                const styling: string = 'torso-' + id + ' torso-img rounded-2xl border border-1 overflow-hidden hover:cursor-pointer';
+                const styling: string = 'torso-' + id + ' torso-img rounded-2xl border border-2 overflow-hidden hover:cursor-pointer bg-[#b93db4]';
 
                 return <div
                     key={id + '-torso'} 

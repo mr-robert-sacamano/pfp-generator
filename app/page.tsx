@@ -76,6 +76,7 @@ export default function Home() {
 
         if (context) {
             images.forEach((image, index) => {
+                console.log(image);
                 context.drawImage(image, 0, 0);
             });
         }
@@ -161,6 +162,7 @@ export default function Home() {
                         className="hidden"
                         width={600}
                         height={600}
+                        priority
                         />
 
                     <Image
@@ -171,6 +173,7 @@ export default function Home() {
                         className="hidden"
                         width={600}
                         height={600}
+                        priority
                         />                        
                 </div>
 
@@ -242,13 +245,17 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="border border-1 p-4 rounded-3xl">
+                    <div className="border border-2 p-4 rounded-3xl">
                         <div className={category == 'ears' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
                             <AssetEars setAssetEars={setAssetEars} />
                         </div>
 
                         <div className={category == 'eyes' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
                             <AssetEyes setAssetEyes={setAssetEyes} />
+                        </div>
+
+                        <div className={category == 'mouth' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
+                            <AssetMouth setAssetMouth={setAssetMouth} />
                         </div>
 
                         <div className={category == 'hair' ? 'grid grid-cols-3 sm:grid-cols-4 gap-2' : 'hidden'}>
